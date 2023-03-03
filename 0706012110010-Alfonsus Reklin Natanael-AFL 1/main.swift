@@ -24,6 +24,9 @@ let evan = monster(type: "Mr. Evan", level: 999999999999, health: 999999999)
 var u = Int(0)
 var u2 = Int(0)
 
+// Variable Nama
+var name = String("Young Hero")
+
 // Homescreen
 while u < 1 {
     
@@ -39,9 +42,15 @@ while u < 1 {
         mob = evan
     }
     
+    // Story
+    // Welcome to the Death, my friend!
+    // You got hit by a flying chair, such a ridiculous achievement I must say! Anyways, I give you a very rare opportunity which I have never offer to anyone but you. You will be sent to a world full of laugh... (sort of)...
+    // Ehem. Enjoy your trip dear
+    // Press [return] to continue
+    
     // Tampilan Awal
     u2 = 0
-    let home = "🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲 \n          WELCOME          \n🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲 \n\n1. Bermain \n2. Gacha \n3. Keluar \nPilihan Anda:"
+    let home = "Welcome to the Death!! 🪦🪦\n\nYou got hit by a flying chair 🪑, such a ridiculous achievement I must say! Anyways, I give you a very rare opportunity which I have never offer to anyone but you 🫵🏻. You will be sent to a world 🌏 full of laugh... (sort of)...\n\nEhem. Enjoy your trip, dear\n\nPress [ok] to continue:"
     print(home)
     let pilih = readLine()
     
@@ -91,6 +100,24 @@ while u < 1 {
                 print("Mohon input dengan benar")
             }
         }
+    case "ok":
+        print("\n\nOh! One thing, I forgot your name. I believe you remember your name. What is your name?:")
+        if let inputName = readLine() {
+            if (inputName.contains("    ") || inputName.isEmpty || inputName.contains("\t")) {
+                name = "Young Hero"
+            } else {
+                name = inputName
+            }
+        }
+        print("\n\nOh? You will be called \(name) from now then!\nGood Luck \(name)!\n\n")
+    case "S":
+        print("\n\nOh! One thing, I forgot your name. I believe you remember your name. What is your name?:")
+        if let inputName = readLine(), let regex = try? NSRegularExpression(pattern: "^[a-zA-Z]+$"), regex.numberOfMatches(in: inputName, range: NSRange(inputName.startIndex..., in: inputName)) == 1 {
+            name = inputName
+        } else {
+            name = "Young Hero"
+        }
+        print("\n\nOh? You will be called \(name) from now then!\nGood Luck \(name)!\n\n")
     case "3":
         // Exit
         let animationFrames = ["🐼", "🦀", "🦆", "🦜", "🦋", "🐞", "🐣", "🦥"]
