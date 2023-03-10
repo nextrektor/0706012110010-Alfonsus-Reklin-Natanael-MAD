@@ -7,18 +7,39 @@
 
 import Foundation
 
+//import CoreGraphics // To detect key event
+//import Cocoa
+//
+//class EditorWindow: NSWindow {
+//    func keyDown(event: NSEvent) {
+//        super.keyDown(with: event)
+//        Swift.print("Caught a key down: \(event.keyCode)!")
+//    }
+//}
+//
+//extension CGKeyCode
+//{
+//    // Define whatever key codes you want to detect here
+//    static let kVK_return: CGKeyCode = 0x24
+//
+//    var isPressed: Bool {
+//        CGEventSource.keyState(.combinedSessionState, key: self)
+//        return true
+//    }
+//}
+
 
 // Template Monster
 struct monster {
-    var type: String
+    var name: String
     var level: Int
     var health: Int
 }
 
 // Monster
-let rama = monster(type: "Rama", level: 2, health: 100)
-let marcell = monster(type: "Marcell", level: 10, health: 1000)
-let evan = monster(type: "Mr. Evan", level: 999999999999, health: 999999999)
+let rama = monster(name: "Rama", level: 2, health: 100)
+let marcell = monster(name: "Marcell", level: 10, health: 1000)
+let evan = monster(name: "Mr. Evan", level: 999999999999, health: 999999999)
 
 // Variable Repeating Menu
 var u = Int(0)
@@ -29,33 +50,126 @@ var name = String("Young Hero")
 
 
 // Function
+
+func MonsterGenerator() -> monster {
+    let random = Int.random(in: 0..<3)
+    var mob: monster
+    switch random {
+    case 0:
+        mob = rama
+    case 1:
+        mob = marcell
+    default:
+        mob = evan
+    }
+    return mob
+}
+
+func Opening () {
+    print("Welcome to the Death!! 🪦🪦")
+    print()
+    print("You got hit by a flying chair 🪑, such a ridiculous achievement I must say! Anyways, I give you a very rare opportunity which I have never offer to anyone but you 🫵🏻. You will be sent to a world 🌏 full of laugh... (sort of)...")
+    print()
+    print("Ehem. Enjoy your trip, dear")
+    print()
+    print("Press [ok] to continue:")
+}
+
+func Welcome() {
+    print("Oh! One thing, I forgot your name. I believe you remember your name. What is your name?:")
+    if let inputName = readLine(), let regex = try? NSRegularExpression(pattern: "^[a-zA-Z]+$"), regex.numberOfMatches(in: inputName, range: NSRange(inputName.startIndex..., in: inputName)) == 1 {
+        name = inputName
+    } else {
+        name = "Young Hero"
+    }
+    print()
+    print("Oh? You will be called \(name) from now then!")
+    print("Good Luck \(name)!")
+    print()
+}
+
 func JourneyScreen() {
-    print("\nFrom here, you can...\n\n")
+    print("From here, you can...")
+    print()
     print("[C]heck your health and stats")
-    print("[H]eal your wounds with potion\n\n")
-    print("... or choose where you want to go\n\n")
+    print("[H]eal your wounds with potion")
+    print()
+    
+    print("... or choose where you want to go")
+    print()
     print("[F]orest of Troll")
     print("[M]ountain of Golem")
-    print("[Q]uit Game\n")
+    print("[Q]uit Game")
+    print()
     print("Your choice?")
 }
 
 func PlayerStats() {
-    print("Player name : \(name) \n")
+    print("Player name : \(name)")
+    print()
     print("HP: /100")
-    print("MP: /50\n")
+    print("MP: /50")
+    print()
 
 //    I can use array or sets for "Magic" and "Items", though I prefer struct
     print("Magic:")
     print("- Physical Attack. No Mana Required. Deal 5pt of damage.")
     print("- Meteor. Use 15pt of MP. Deal 50pt of damage.")
-    print("- Shield. Use 10pt of MP. Block enemy's attack in 1 turn")
+    print("- Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
     print()
     print("Items:")
     print("- Potion x[IntPotion]. Heal 20pt of your HP.")
-    print("- Elixir x[IntElixir]. Heal 10pt of your MP.")
+    print("- Elixir x[IntElixir]. Regenerate 10pt of your MP.")
     print()
     print("Press [return] to go back: ")
+}
+
+func ForestTroll() {
+    print("As you enter the forest, you feel a sense of unease wash over you.")
+    print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
+    let monsterAcak = MonsterGenerator()
+    print("😈 Name: \(monsterAcak.name)")
+    print("😈 Name: \(monsterAcak.level)")
+    print("😈 Health: \(monsterAcak.health)")
+    print()
+    print("Choose your action:")
+    print("[1] Physical Attack. No Mana Required. Deal 5pt of damage.")
+    print("[2] Meteor. Use 15pt of MP. Deal 50pt of damage.")
+    print("[3] Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
+    print()
+    print("[4] Use Potion to heal wound.")
+    print("[5] Use Elixir to regenerate MP.")
+    print("[6] Reetttrrreaaatttt!!!!.")
+    print()
+    print("Your choice?")
+}
+
+func MountainGolem() {
+    print("As you make your way through the rugged mountain terrain, you can feel the chill of the wind biting at your skin.")
+    print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
+    let monsterAcak = MonsterGenerator()
+    print("😈 Name: \(monsterAcak.name)")
+    print("😈 Name: \(monsterAcak.level)")
+    print("😈 Health: \(monsterAcak.health)")
+    print()
+    print("Choose your action:")
+    print("[1] Physical Attack. No Mana Required. Deal 5pt of damage.")
+    print("[2] Meteor. Use 15pt of MP. Deal 50pt of damage.")
+    print("[3] Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
+    print()
+    print("[4] Use Potion to heal wound.")
+    print("[5] Use Elixir to regenerate MP.")
+    print("[6] Reetttrrreaaatttt!!!!.")
+    print()
+    print("Your choice?")
+}
+
+func Flee() {
+    print("You feel that if you don't escape soon, you won't be able to continue the fight.")
+    print("You look around frantically, searching for a way out. You sprint toward the exit and scream like a little girl.")
+    print("You're safe, for now.")
+    print("Press [return] to continue:")
+    
 }
 
 // Homescreen
@@ -79,15 +193,17 @@ while u < 1 {
     u2 = 0
     let home = "Welcome to the Death!! 🪦🪦\n\nYou got hit by a flying chair 🪑, such a ridiculous achievement I must say! Anyways, I give you a very rare opportunity which I have never offer to anyone but you 🫵🏻. You will be sent to a world 🌏 full of laugh... (sort of)...\n\nEhem. Enjoy your trip, dear\n\nPress [ok] to continue:"
     print(home)
+    
+    
     let pilih = readLine()
     
     switch pilih {
-    case "1":
+    case "1" :
         
         // Game Start
         while ( u2 < 1 && mob.health > 0) {
             
-            let monsterString = "\n\nMonster kamu: \(mob.type) \nLevel: \(mob.level) \nHealth: \(mob.health)"
+            let monsterString = "\n\nMonster kamu: \(mob.name) \nLevel: \(mob.level) \nHealth: \(mob.health)"
             print(monsterString)
             
             let menu = "\n\nPilih Aksi: \n1. Pukul \n2. Tendang \n3. Kabur \n\nInput Aksi: "
@@ -153,6 +269,9 @@ while u < 1 {
         print("\n\nOh? You will be called \(name) from now then!\nGood Luck \(name)!\n\n")
     case "J":
         JourneyScreen()
+    case "":
+            //        This doesn't work, it also detect emoji as nil
+            print("This should be [return] statement")
     case "3":
         
         // Exit
