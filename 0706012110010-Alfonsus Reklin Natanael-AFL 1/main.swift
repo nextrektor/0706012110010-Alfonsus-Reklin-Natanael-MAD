@@ -46,7 +46,7 @@ var marcell = monster(name: "Marcell", level: 10, health: 1000)
 var evan = monster(name: "Mr. Evan", level: 999999999999, health: 999999999)
 
 let Skills = [
-    "Physical Attack. No Mana Required. Deal 5pt of damage.",
+    "Physical Attack. No Mana Required. Deal 1pt - 10pt of damage.",
     "Meteor. Use 15pt of MP. Deal 50pt of damage.",
     "Shield. Use 10pt of MP. Block enemy's attack in 1 turn.",
     "Potion. Heal HP.",
@@ -72,7 +72,7 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
     print()
     switch pilih {
     case "1":
-        damage = Int.random(in: 1..<10)
+        damage = Int.random(in: 1..<11)
         print("You dealt \(damage) damage!!")
         print("Monster: \(monsterAcak.name)")
     default:
@@ -280,7 +280,7 @@ func Exit() {
 }
 
 
-// Coba
+// Main View
 while(true) {
     Opening()
     Welcome()
