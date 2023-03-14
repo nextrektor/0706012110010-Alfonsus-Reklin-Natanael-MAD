@@ -36,10 +36,14 @@ struct monster {
     var health: Int
 }
 
+// Player
+var playerHealth = 100
+var playerMana = 100
+
 // Monster
-let rama = monster(name: "Rama", level: 2, health: 100)
-let marcell = monster(name: "Marcell", level: 10, health: 1000)
-let evan = monster(name: "Mr. Evan", level: 999999999999, health: 999999999)
+var rama = monster(name: "Rama", level: 2, health: 100)
+var marcell = monster(name: "Marcell", level: 10, health: 1000)
+var evan = monster(name: "Mr. Evan", level: 999999999999, health: 999999999)
 
 let Skills = [
     "Physical Attack. No Mana Required. Deal 5pt of damage.",
@@ -58,13 +62,25 @@ var name = String("Young Hero")
 
 
 // Function To-Do
-func fight() {
+func fight(pilih: String, monsterAcak: monster) {
     // I may only use this one func to all fight!!
     // Random Damages -> Not necessary but good
     // Critical Chances??
     // Chance to drop item??
     // How much Player lost HP?? -> random?
+    
+    print()
+    switch pilih {
+    case "1":
+        let damage = Int.random(in: 1..<10)
+        monsterAcak.health = monsterAcak.health - damage
+        print("Monster: \(monsterAcak.name)")
+    default:
+        print("Mohon input yang sesuai")
+    }
+    
 }
+
 
 func Heal() {
     
@@ -157,23 +173,66 @@ func PlayerStats() {
     print("MP: /50")
     print()
 
-//    I can use array or sets for "Magic" and "Items", though I prefer struct
-    print("Magic:")
-    print("- Physical Attack. No Mana Required. Deal 5pt of damage.")
-    print("- Meteor. Use 15pt of MP. Deal 50pt of damage.")
-    print("- Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
+    print("Skills:")
+    for (index, skill) in Skills.enumerated() {
+        if (index < 3) {
+            print("[\(index + 1)] \(skill)")
+            if (index == 2) {
+                print()
+            }
+        }
+    }
+    
     print()
     print("Items:")
     print("- Potion x[IntPotion]. Heal 20pt of your HP.")
     print("- Elixir x[IntElixir]. Regenerate 10pt of your MP.")
+    
+//    print("- Physical Attack. No Mana Required. Deal 5pt of damage.")
+//    print("- Meteor. Use 15pt of MP. Deal 50pt of damage.")
+//    print("- Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
+//    print()
+//    print("Items:")
+//    print("- Potion x[IntPotion]. Heal 20pt of your HP.")
+//    print("- Elixir x[IntElixir]. Regenerate 10pt of your MP.")
+    
     print()
     print("Press [return] to go back: ")
 }
 
 func ForestTroll() {
-    print("As you enter the forest, you feel a sense of unease wash over you.")
-    print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
-    let monsterAcak = MonsterGenerator()
+    var monsterAcak = MonsterGenerator()
+    while (true) {
+        print()
+        print("As you enter the forest, you feel a sense of unease wash over you.")
+        print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
+        print()
+        print("😈 Name: \(monsterAcak.name)")
+        print("😈 Level: \(monsterAcak.level)")
+        print("😈 Health: \(monsterAcak.health)")
+        print()
+        print("Choose your action:")
+        print()
+        for (index, skill) in Skills.enumerated() {
+            print("[\(index + 1)] \(skill)")
+            if (index == 2) {
+                print()
+            }
+        }
+        
+        print()
+        print("Your choice?")
+        if let pilih = readLine() {
+            fight(pilih: pilih, monsterAcak: monsterAcak)
+        }
+    }
+}
+
+func MountainGolem() {
+    print()
+    print("As you make your way through the rugged mountain terrain, you can feel the chill of the wind biting at your skin.")
+    print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
+    var monsterAcak = MonsterGenerator()
     print()
     print("😈 Name: \(monsterAcak.name)")
     print("😈 Level: \(monsterAcak.level)")
@@ -187,34 +246,7 @@ func ForestTroll() {
             print()
         }
     }
-//    print("[1] Physical Attack. No Mana Required. Deal 5pt of damage.")
-//    print("[2] Meteor. Use 15pt of MP. Deal 50pt of damage.")
-//    print("[3] Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
-//    print()
-//    print("[4] Use Potion to heal wound.")
-//    print("[5] Use Elixir to regenerate MP.")
-//    print("[6] Reetttrrreaaatttt!!!!.")
-    print()
-    print("Your choice?")
-}
-
-func MountainGolem() {
-    print("As you make your way through the rugged mountain terrain, you can feel the chill of the wind biting at your skin.")
-    print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
-    let monsterAcak = MonsterGenerator()
-    print()
-    print("😈 Name: \(monsterAcak.name)")
-    print("😈 Level: \(monsterAcak.level)")
-    print("😈 Health: \(monsterAcak.health)")
-    print()
-    print("Choose your action:")
-    print("[1] Physical Attack. No Mana Required. Deal 5pt of damage.")
-    print("[2] Meteor. Use 15pt of MP. Deal 50pt of damage.")
-    print("[3] Shield. Use 10pt of MP. Block enemy's attack in 1 turn.")
-    print()
-    print("[4] Use Potion to heal wound.")
-    print("[5] Use Elixir to regenerate MP.")
-    print("[6] Reetttrrreaaatttt!!!!.")
+    
     print()
     print("Your choice?")
 }
