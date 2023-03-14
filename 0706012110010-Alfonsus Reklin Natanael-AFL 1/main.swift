@@ -42,12 +42,12 @@ var playerMana = 100
 
 // Monster
 var rama = monster(name: "Rama", level: 2, health: 100)
-var marcell = monster(name: "Marcell", level: 10, health: 1000)
+var marcell = monster(name: "Marcell", level: 10, health: 100)
 var evan = monster(name: "Mr. Evan", level: 999999999999, health: 999999999)
 
 let Skills = [
     "Physical Attack. No Mana Required. Deal 1pt - 10pt of damage.",
-    "Meteor. Use 15pt of MP. Deal 50pt of damage.",
+    "Meteor. Use 15pt of MP. Deal 50pt - 100pt of damage.",
     "Shield. Use 10pt of MP. Block enemy's attack in 1 turn.",
     "Potion. Heal HP.",
     "Elixir. Refenerate MP.",
@@ -68,15 +68,61 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
     // Critical Chances??
     // Chance to drop item??
     // How much Player lost HP?? -> random?
+    
+    // Variable Damage
     var damage: Int = 0
+    var damageToPlayer: Int = 0
+    
+    func EnemyDamage() {
+        damageToPlayer = Int.random(in: 0..<70)
+        playerHealth = playerHealth - damageToPlayer
+        print()
+        print("~~~ Enemy's turn ~~~")
+        print("\(monsterAcak.name) deal \(damageToPlayer) damage!!")
+        print()
+        print("Your HP: \(playerHealth)")
+        print("Your MP: \(playerMana)")
+    }
+    
     print()
     switch pilih {
+        
+    // Physical Attack
     case "1":
         damage = Int.random(in: 1..<11)
         print("You dealt \(damage) damage!!")
-        print("Monster: \(monsterAcak.name)")
+        EnemyDamage()
+        
+    // Meteor
+    case "2":
+        if playerMana < 15 {
+            print("Your MP is not enough!!!")
+        } else {
+            damage = Int.random(in: 50..<101)
+            print("You dealt \(damage) damage!!")
+            playerMana = playerMana - 15
+            EnemyDamage()
+        }
+        
+    // Shield
+    case "3":
+        if playerMana < 10 {
+            print("Your MP is not enough!!!")
+        } else {
+            playerMana = playerMana - 10
+            damage = 0
+            damageToPlayer = 0
+            print("You block enemy's damage!!")
+            print()
+        }
+        
+    // Cheat Killermove - Insta Kill (Development Only)
+    case "killermove":
+        damage = monsterAcak.health
+        print("You get a help from War God ⚡️, Marcell")
+        print("The enemy died instantly 🪦")
     default:
-        print("Mohon input yang sesuai")
+        print("Please input correctly!")
     }
     return damage
 }
@@ -163,6 +209,12 @@ func JourneyScreen() {
             print("Please input correctly!")
             print()
         }
+        
+        if playerHealth <= 0 {
+            print()
+            print("You died!")
+            break
+        }
     }
 }
 
@@ -226,6 +278,9 @@ func ForestTroll() {
 //            fight(pilih: pilih, monsterAcak: monsterAcak)
             let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
             monsterAcak.health = monsterAcak.health - damage
+        }
+        if monsterAcak.health <= 0 || playerHealth <= 0 {
+            break
         }
     }
 }
