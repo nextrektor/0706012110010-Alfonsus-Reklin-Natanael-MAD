@@ -62,23 +62,23 @@ var name = String("Young Hero")
 
 
 // Function To-Do
-func fight(pilih: String, monsterAcak: monster) {
+func fight(pilih: String, monsterAcak: monster) -> Int {
     // I may only use this one func to all fight!!
     // Random Damages -> Not necessary but good
     // Critical Chances??
     // Chance to drop item??
     // How much Player lost HP?? -> random?
-    
+    var damage: Int = 0
     print()
     switch pilih {
     case "1":
-        let damage = Int.random(in: 1..<10)
-        monsterAcak.health = monsterAcak.health - damage
+        damage = Int.random(in: 1..<10)
+        print("You dealt \(damage) damage!!")
         print("Monster: \(monsterAcak.name)")
     default:
         print("Mohon input yang sesuai")
     }
-    
+    return damage
 }
 
 
@@ -202,10 +202,10 @@ func PlayerStats() {
 
 func ForestTroll() {
     var monsterAcak = MonsterGenerator()
+    print()
+    print("As you enter the forest, you feel a sense of unease wash over you.")
+    print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
     while (true) {
-        print()
-        print("As you enter the forest, you feel a sense of unease wash over you.")
-        print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
         print()
         print("😈 Name: \(monsterAcak.name)")
         print("😈 Level: \(monsterAcak.level)")
@@ -223,7 +223,9 @@ func ForestTroll() {
         print()
         print("Your choice?")
         if let pilih = readLine() {
-            fight(pilih: pilih, monsterAcak: monsterAcak)
+//            fight(pilih: pilih, monsterAcak: monsterAcak)
+            let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
+            monsterAcak.health = monsterAcak.health - damage
         }
     }
 }
