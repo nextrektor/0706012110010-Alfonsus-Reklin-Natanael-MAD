@@ -234,7 +234,7 @@ func MountainGolem() {
     print()
     print("As you make your way through the rugged mountain terrain, you can feel the chill of the wind biting at your skin.")
     print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
-    var monsterAcak = MonsterGenerator()
+    let monsterAcak = MonsterGenerator()
     print()
     print("😈 Name: \(monsterAcak.name)")
     print("😈 Level: \(monsterAcak.level)")
