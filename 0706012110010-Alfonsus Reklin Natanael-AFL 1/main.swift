@@ -63,11 +63,7 @@ var name = String("Young Hero")
 
 // Function To-Do
 func fight(pilih: String, monsterAcak: monster) -> Int {
-    // I may only use this one func to all fight!!
-    // Random Damages -> Not necessary but good
-    // Critical Chances??
     // Chance to drop item??
-    // How much Player lost HP?? -> random?
     
     // Variable Damage
     var damage: Int = 0
@@ -221,8 +217,8 @@ func JourneyScreen() {
 func PlayerStats() {
     print("Player name : \(name)")
     print()
-    print("HP: /100")
-    print("MP: /50")
+    print("HP: \(playerHealth) / 100")
+    print("MP: \(playerMana) / 100")
     print()
 
     print("Skills:")
@@ -286,26 +282,36 @@ func ForestTroll() {
 }
 
 func MountainGolem() {
+    var monsterAcak = MonsterGenerator()
     print()
     print("As you make your way through the rugged mountain terrain, you can feel the chill of the wind biting at your skin.")
     print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
-    let monsterAcak = MonsterGenerator()
-    print()
-    print("😈 Name: \(monsterAcak.name)")
-    print("😈 Level: \(monsterAcak.level)")
-    print("😈 Health: \(monsterAcak.health)")
-    print()
-    print("Choose your action:")
-    print()
-    for (index, skill) in Skills.enumerated() {
-        print("[\(index + 1)] \(skill)")
-        if (index == 2) {
-            print()
+    while (true) {
+        print()
+        print("😈 Name: \(monsterAcak.name)")
+        print("😈 Level: \(monsterAcak.level)")
+        print("😈 Health: \(monsterAcak.health)")
+        print()
+        print("Choose your action:")
+        print()
+        for (index, skill) in Skills.enumerated() {
+            print("[\(index + 1)] \(skill)")
+            if (index == 2) {
+                print()
+            }
+        }
+        
+        print()
+        print("Your choice?")
+        if let pilih = readLine() {
+//            fight(pilih: pilih, monsterAcak: monsterAcak)
+            let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
+            monsterAcak.health = monsterAcak.health - damage
+        }
+        if monsterAcak.health <= 0 || playerHealth <= 0 {
+            break
         }
     }
-    
-    print()
-    print("Your choice?")
 }
 
 func Flee() {
