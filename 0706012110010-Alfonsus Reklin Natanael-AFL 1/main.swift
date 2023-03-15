@@ -207,16 +207,30 @@ func Heal() -> (healHP: () -> Void, regenerateMP: () -> Void) {
     
     // This is Tuple of Functions - Coba2 soalnya udah kebanyakan function, next time bakal pecah file aja
     
-    func healHP() {
-        playerHealth += 20
-        print("Your HP healed by 20!")
-        checkHpMp()
+    func healHP() {     // => Heal HP
+        if hpPotion > 0 {
+            playerHealth += 20
+            hpPotion -= 1
+            print("Your HP healed by 20!")
+            checkHpMp()
+            checkPotion()
+        } else {
+            print()
+            print("Your HP Potion is not Enough!")
+        }
     }
     
-    func regenerateMP() {
-        playerMana += 10
-        print("Your MP restored by 10!")
-        checkHpMp()
+    func regenerateMP() {   // => Regenerate MP
+        if mpPotion > 0 {
+            playerMana += 10
+            mpPotion -= 1
+            print("Your MP restored by 10!")
+            checkHpMp()
+            checkPotion()
+        } else {
+            print()
+            print("Your MP Potion is not Enough!")
+        }
     }
     
     return (healHP, regenerateMP)
