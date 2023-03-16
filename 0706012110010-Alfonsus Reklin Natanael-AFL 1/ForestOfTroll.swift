@@ -34,7 +34,7 @@ func ForestTroll() {
         
         print()
         print("Your choice?")
-        if let pilih = readLine() {
+        if let pilih = readLine() {                                         // => This will be passed to Battle to determine which skill to use
             let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
             monsterAcak.health -= damage
         }

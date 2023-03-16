@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+//                            ===================                  FUNCTIONS                  ===================                            //
+
 func dropPotion() {
     let dropChance = Int.random(in: 0..<201)
     let totalPotion = Int.random(in: 1..<6)
@@ -37,11 +40,15 @@ func checkPotion () {
 }
 
 
+//                            ===================             TUPLE OF FUNCTIONS             ===================                            //
+//                           Why use tuple?? To Simplify the getter since I made lots of functions here and there                           //
+
 func Heal() -> (healHP: () -> Void, regenerateMP: () -> Void) {
     
-    // This is Tuple of Functions - Coba2 soalnya udah kebanyakan function, next time bakal pecah file aja
     
-    func healHP() {     // => Heal HP
+    //                            ===================       Heal HP     ===================                            //
+    
+    func healHP() {
         if hpPotion > 0 {
             playerHealth += 20
             hpPotion -= 1
@@ -54,7 +61,10 @@ func Heal() -> (healHP: () -> Void, regenerateMP: () -> Void) {
         }
     }
     
-    func regenerateMP() {   // => Regenerate MP
+    
+    //                            ===================    Regenerate MP    ===================                            //
+    
+    func regenerateMP() {
         if mpPotion > 0 {
             playerMana += 10
             mpPotion -= 1

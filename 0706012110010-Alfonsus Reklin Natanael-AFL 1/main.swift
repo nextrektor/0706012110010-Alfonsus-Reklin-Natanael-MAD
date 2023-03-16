@@ -7,6 +7,12 @@
 
 import Foundation
 
+while(true) {
+    Opening()
+    Welcome()
+    JourneyScreen()
+}
+
 
 // [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] //
 
@@ -35,10 +41,3 @@ import Foundation
 
 // CODE ABOVE IS USED TO DETECT KEYBOARD VALUE, ESPECIALLY TO DETECT RETURN //
 // I FOUND EASIER WAY, BUT I DON'T WANT TO DELETE IT JUST YET //
-
-
-while(true) {
-    Opening()
-    Welcome()
-    JourneyScreen()
-}

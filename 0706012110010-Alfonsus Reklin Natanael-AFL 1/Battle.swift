@@ -13,8 +13,8 @@ import Foundation
 func fight(pilih: String, monsterAcak: monster) -> Int {
     
     // Variable Battle
-    var damage: Int = 0
-    var damageToPlayer: Int = 0
+    var damage: Int = 0             // => This will be passed to ForestOfTroll or MountainOfGolem since I couldn't change the monster HP (constant)
+    var damageToPlayer: Int = 0     // => This will be passed to ForestOfTroll or MountainOfGolem since I couldn't change the monster HP (constant)
     
     func EnemyDamage() {
         damageToPlayer = Int.random(in: 0..<11)
@@ -28,7 +28,7 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
     print()
     switch pilih {
         
-    // Physical Attack
+    //                            ===================       Physical Attack     ===================                            //
     case "1":
         damage = Int.random(in: 1..<11)
         print("You dealt \(damage) damage!!")
@@ -41,7 +41,7 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
             print()
         }
         
-    // Meteor
+    //                            ===================           Meteor          ===================                            //
     case "2":
         if playerMana < 15 {
             print("Your MP is not enough!!!")
@@ -59,7 +59,7 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
             }
         }
         
-    // Shield
+    //                            ===================           Shield          ===================                            //
     case "3":
         if playerMana < 10 {
             print("Your MP is not enough!!!")
@@ -71,19 +71,22 @@ func fight(pilih: String, monsterAcak: monster) -> Int {
             print()
         }
         
-    // Heal HP
+    //                            ===================           Heal HP         ===================                            //
     case "4":
         Heal().healHP()
         EnemyDamage()
         
+    //                            ===================         Regenerate MP     ===================                            //
     case "5":
         Heal().regenerateMP()
         EnemyDamage()
         
+    //                            ===================             Flee          ===================                            //
     case "6":
         Flee()
         
-    // Cheat Killermove - Insta Kill (Development Only)
+    //                            ===================       Cheat Insta Kill    ===================                            //
+
     case "killermove":
         damage = monsterAcak.health
         print("You get a help from War God ⚡️, Marcell")
