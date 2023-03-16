@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0420E73A29AD9E5500FAE155 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420E73929AD9E5500FAE155 /* main.swift */; };
+		04C2B42129C2D3CB00EC5CCF /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42029C2D3CB00EC5CCF /* Monster.swift */; };
+		04C2B42329C2D3D800EC5CCF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42229C2D3D800EC5CCF /* Player.swift */; };
+		04C2B42529C2D3E800EC5CCF /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42429C2D3E800EC5CCF /* Battle.swift */; };
+		04C2B42729C2D3F900EC5CCF /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42629C2D3F900EC5CCF /* Heal.swift */; };
+		04C2B42929C2D4DB00EC5CCF /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42829C2D4DB00EC5CCF /* Screen.swift */; };
+		04C2B42B29C2D60400EC5CCF /* ForestOfTroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42A29C2D60400EC5CCF /* ForestOfTroll.swift */; };
+		04C2B42D29C2D62300EC5CCF /* MountainOfGolem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2B42C29C2D62300EC5CCF /* MountainOfGolem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		0420E73629AD9E5500FAE155 /* 0706012110010-Alfonsus Reklin Natanael-AFL 1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0706012110010-Alfonsus Reklin Natanael-AFL 1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0420E73929AD9E5500FAE155 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		04C2B42029C2D3CB00EC5CCF /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		04C2B42229C2D3D800EC5CCF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		04C2B42429C2D3E800EC5CCF /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		04C2B42629C2D3F900EC5CCF /* Heal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
+		04C2B42829C2D4DB00EC5CCF /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		04C2B42A29C2D60400EC5CCF /* ForestOfTroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestOfTroll.swift; sourceTree = "<group>"; };
+		04C2B42C29C2D62300EC5CCF /* MountainOfGolem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainOfGolem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,13 @@
 		0420E73829AD9E5500FAE155 /* 0706012110010-Alfonsus Reklin Natanael-AFL 1 */ = {
 			isa = PBXGroup;
 			children = (
+				04C2B42029C2D3CB00EC5CCF /* Monster.swift */,
+				04C2B42229C2D3D800EC5CCF /* Player.swift */,
+				04C2B42429C2D3E800EC5CCF /* Battle.swift */,
+				04C2B42629C2D3F900EC5CCF /* Heal.swift */,
+				04C2B42829C2D4DB00EC5CCF /* Screen.swift */,
+				04C2B42A29C2D60400EC5CCF /* ForestOfTroll.swift */,
+				04C2B42C29C2D62300EC5CCF /* MountainOfGolem.swift */,
 				0420E73929AD9E5500FAE155 /* main.swift */,
 			);
 			path = "0706012110010-Alfonsus Reklin Natanael-AFL 1";
@@ -120,6 +141,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C2B42929C2D4DB00EC5CCF /* Screen.swift in Sources */,
+				04C2B42D29C2D62300EC5CCF /* MountainOfGolem.swift in Sources */,
+				04C2B42329C2D3D800EC5CCF /* Player.swift in Sources */,
+				04C2B42B29C2D60400EC5CCF /* ForestOfTroll.swift in Sources */,
+				04C2B42129C2D3CB00EC5CCF /* Monster.swift in Sources */,
+				04C2B42729C2D3F900EC5CCF /* Heal.swift in Sources */,
+				04C2B42529C2D3E800EC5CCF /* Battle.swift in Sources */,
 				0420E73A29AD9E5500FAE155 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
