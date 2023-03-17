@@ -49,12 +49,18 @@ func Heal() -> (healHP: () -> Void, regenerateMP: () -> Void) {
     //                            ===================       Heal HP     ===================                            //
     
     func healHP() {
-        if hpPotion > 0 {
+        if hpPotion > 0  && playerHealth != 100 {
             playerHealth += 20
+            if playerHealth > 100 {
+                playerHealth = 100
+            }
             hpPotion -= 1
             print("Your HP healed by 20!")
             checkHpMp()
             checkPotion()
+        } else if playerHealth == 100 {
+            print()
+            print("HP Anda sudah penuh!")
         } else {
             print()
             print("Your HP Potion is not Enough!")
@@ -65,12 +71,18 @@ func Heal() -> (healHP: () -> Void, regenerateMP: () -> Void) {
     //                            ===================    Regenerate MP    ===================                            //
     
     func regenerateMP() {
-        if mpPotion > 0 {
+        if mpPotion > 0 && playerMana != 100{
             playerMana += 10
+            if playerMana > 100 {
+                playerMana = 100
+            }
             mpPotion -= 1
             print("Your MP restored by 10!")
             checkHpMp()
             checkPotion()
+        } else if playerMana == 100{
+            print()
+            print("MP Anda sudah penuh!")
         } else {
             print()
             print("Your MP Potion is not Enough!")

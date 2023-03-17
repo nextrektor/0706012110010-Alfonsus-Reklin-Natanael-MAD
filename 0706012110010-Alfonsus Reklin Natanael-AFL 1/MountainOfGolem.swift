@@ -14,9 +14,9 @@ func MountainGolem() {
     print("Suddenly, you hear a sound sound that makes you freeze in your tracks. That's when you see it - a massive, snarling Golem emerging from the shadows.")
     while (true) {
         print()
-        print("😈 Name: \(monsterAcak.name)")
-        print("😈 Level: \(monsterAcak.level)")
-        print("😈 Health: \(monsterAcak.health)")
+        print("😈 Name: \(monsterAcak["name"] as! String)")
+        print("😈 Level: \(monsterAcak["level"] as! Int)")
+        print("😈 Health: \(monsterAcak["health"] as! Int)")
         print()
         print("Choose your action:")
         print()
@@ -31,9 +31,11 @@ func MountainGolem() {
         print("Your choice?")
         if let pilih = readLine() {                                         // => This will be passed to Battle to determine which skill to use
             let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
-            monsterAcak.health -= damage
+            var updatedMonsterAcak = monsterAcak
+                updatedMonsterAcak["health"] = (updatedMonsterAcak["health"] as! Int) - damage
+                monsterAcak = updatedMonsterAcak
         }
-        if monsterAcak.health <= 0 || playerHealth <= 0 {
+        if (monsterAcak["health"] as! Int) <= 0 || playerHealth <= 0 {
             break
         }
     }

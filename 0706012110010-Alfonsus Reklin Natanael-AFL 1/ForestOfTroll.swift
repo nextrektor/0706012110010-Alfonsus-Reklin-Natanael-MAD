@@ -14,9 +14,9 @@ func ForestTroll() {
     print("Suddenly, you hear the sound of twigs snapping behind you. You quickly spin around, and find a Troll emerging from the shadows.")
     while (true) {
         print()
-        print("😈 Name: \(monsterAcak.name)")
-        print("😈 Level: \(monsterAcak.level)")
-        print("😈 Health: \(monsterAcak.health)")
+        print("😈 Name: \(monsterAcak["name"] as! String)")
+        print("😈 Level: \(monsterAcak["level"] as! Int)")
+        print("😈 Health: \(monsterAcak["health"] as! Int)")
         print()
         print("============================================")
         print()
@@ -36,9 +36,11 @@ func ForestTroll() {
         print("Your choice?")
         if let pilih = readLine() {                                         // => This will be passed to Battle to determine which skill to use
             let damage = fight(pilih: pilih, monsterAcak: monsterAcak)
-            monsterAcak.health -= damage
+            var updatedMonsterAcak = monsterAcak
+                updatedMonsterAcak["health"] = (updatedMonsterAcak["health"] as! Int) - damage
+                monsterAcak = updatedMonsterAcak
         }
-        if monsterAcak.health <= 0 || playerHealth <= 0 {
+        if (monsterAcak["health"] as! Int) <= 0 || playerHealth <= 0 {
             break
         }
     }
