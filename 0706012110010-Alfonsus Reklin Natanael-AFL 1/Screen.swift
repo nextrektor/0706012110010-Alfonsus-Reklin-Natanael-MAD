@@ -73,10 +73,10 @@ func JourneyScreen() {
             PlayerStats()
         case "H":
             Heal().healHP()
-        case "F":
-            ForestTroll()
-        case "M":
-            MountainGolem()
+//        case "F":
+//            ForestTroll()
+//        case "M":
+//            MountainGolem()
         case "Q":
             Exit()
         default:
