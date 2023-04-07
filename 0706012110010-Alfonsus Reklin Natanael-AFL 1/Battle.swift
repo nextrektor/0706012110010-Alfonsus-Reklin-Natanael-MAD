@@ -10,7 +10,7 @@ import Foundation
 
 //                            ===================                  FUNCTION                  ===================                            //
 
-func fight(pilih: String, monsterAcak: [String: Any?]) -> Int {
+func fight(pilih: String, monsterAcak: Monster) -> Int {
     
     // Variable Battle
     var damage: Int = 0             // => This will be passed to ForestOfTroll or MountainOfGolem since I couldn't change the monster HP (constant)
@@ -21,7 +21,7 @@ func fight(pilih: String, monsterAcak: [String: Any?]) -> Int {
         playerHealth -= damageToPlayer
         print()
         print("~~~ Enemy's turn ~~~")
-        print("\(monsterAcak["name"] as! String) deal \(damageToPlayer) damage!!")
+        print("\(monsterAcak.name) deal \(damageToPlayer) damage!!")
     }
     
     print()
@@ -32,11 +32,11 @@ func fight(pilih: String, monsterAcak: [String: Any?]) -> Int {
         damage = Int.random(in: 1..<11)
         print("You dealt \(damage) damage!!")
         dropPotion()
-        if ((monsterAcak["health"] as! Int) - damage) > 0 {
+        if ((monsterAcak.health) - damage) > 0 {
             EnemyDamage()
         } else {
             print()
-            print("You've defeat \(monsterAcak["name"] as! String)")
+            print("You've defeat \(monsterAcak.name)")
             print()
         }
         
@@ -49,11 +49,11 @@ func fight(pilih: String, monsterAcak: [String: Any?]) -> Int {
             print("You dealt \(damage) damage!!")
             dropPotion()
             playerMana -= 15
-            if ((monsterAcak["health"] as! Int) - damage) > 0 {
+            if ((monsterAcak.health) - damage) > 0 {
                 EnemyDamage()
             } else {
                 print()
-                print("You've defeat \(monsterAcak["name"] as! String)")
+                print("You've defeat \(monsterAcak.name)")
                 print()
             }
         }
@@ -87,7 +87,7 @@ func fight(pilih: String, monsterAcak: [String: Any?]) -> Int {
     //                            ===================       Cheat Insta Kill    ===================                            //
 
     case "killermove":
-        damage = (monsterAcak["health"] as! Int)
+        damage = (monsterAcak.health)
         print("You get a help from War God ⚡️, Marcell")
         print("The enemy died instantly 🪦")
         

@@ -88,7 +88,7 @@ func JourneyScreen() {
         if playerHealth <= 0 {
             print()
             print("You died!")
-            break
+            Exit()
         }
     }
 }
